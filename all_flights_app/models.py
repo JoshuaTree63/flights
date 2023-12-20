@@ -17,7 +17,6 @@ class Profile(models.Model):
 
 
 class Flight(models.Model):
-
     flight_code = models.CharField(max_length=8, unique=True)
 
     origin_country = CountryField()
@@ -59,6 +58,10 @@ class Order(models.Model):
         ordering = ['id']
 
 
+class BoardingPass(models.Model):
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, related_name='boarding_passes')
+    flight = models.ForeignKey(Flight, on_delete=models.RESTRICT, related_name='boarding_passes')
+    url = models.CharField(max_length=512)
 
-
-
+    class Meta:
+        db_table = 'boarding_passes'
