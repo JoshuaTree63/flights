@@ -45,6 +45,20 @@ class Flight(models.Model):
         ordering = ['id']
 
 
+class Order(models.Model):
+    flight = models.ForeignKey(Flight, on_delete=models.RESTRICT, related_name='orders')
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, related_name='orders')
+
+    seats = models.IntegerField(
+        validators=[validators.MinValueValidator(0), validators.MaxValueValidator(700)])
+    order_date = models.DateField(auto_now_add=True)
+    total_price = models.FloatField(validators=[validators.MinValueValidator(0)], blank=True, null=False)
+
+    class Meta:
+        db_table = 'orders'
+        ordering = ['id']
+
+
 
 
 
