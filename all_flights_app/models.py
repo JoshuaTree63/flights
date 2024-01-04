@@ -4,12 +4,24 @@ from django.core import validators
 from django_countries.fields import CountryField
 
 
-# Create your models here.
+# User <-> Profile
+# u: User
+# u.profile_set[0]
+# u.profile
+
+# ForeignKey -> One2Many
+# ManyToMany
+# OneToOne
+
+# user: User => user.profile
 
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.RESTRICT, related_name='profile')
+    # user = models.ForeignKey(
+    #     User, on_delete=models.RESTRICT, related_name='profile')
     address = models.CharField(max_length=256, null=True)
+
     img_url = models.CharField(max_length=1024, null=True)
 
     class Meta:
@@ -43,6 +55,10 @@ class Flight(models.Model):
         db_table = 'flights'
         ordering = ['id']
 
+
+# o = Order()
+# o.flight => Flight => o.flight.seats_left => o.flight.id
+# o.flight_id => int
 
 class Order(models.Model):
     flight = models.ForeignKey(Flight, on_delete=models.RESTRICT, related_name='orders')
