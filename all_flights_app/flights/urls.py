@@ -1,0 +1,13 @@
+from django.urls import path
+from rest_framework.routers import DefaultRouter
+
+from all_flights_app.flights.views import FlightsViewSet, get_origin_cities
+
+router = DefaultRouter()
+router.register('', FlightsViewSet)
+
+urlpatterns = router.urls
+
+urlpatterns.extand([
+    path('origin_cities', get_origin_cities)
+])

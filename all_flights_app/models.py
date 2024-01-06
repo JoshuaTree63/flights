@@ -4,17 +4,6 @@ from django.core import validators
 from django_countries.fields import CountryField
 
 
-# User <-> Profile
-# u: User
-# u.profile_set[0]
-# u.profile
-
-# ForeignKey -> One2Many
-# ManyToMany
-# OneToOne
-
-# user: User => user.profile
-
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.RESTRICT, related_name='profile')
