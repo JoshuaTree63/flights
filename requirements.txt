@@ -4,3 +4,6 @@ djangorestframework
 django-filter
 djangorestframework-simplejwt
 django_countries
+google.cloud
+google.oauth2
+

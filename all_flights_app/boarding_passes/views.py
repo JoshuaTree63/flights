@@ -47,3 +47,4 @@ def download_boarding_pass(request):
 
     return FileResponse(file_obj)
 
+
