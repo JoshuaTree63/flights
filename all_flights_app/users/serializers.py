@@ -25,7 +25,6 @@ class ExtendedTokenObtainPairSerializer(TokenObtainPairSerializer):
         return obj
 
 
-
 class UserProfileSerializer(ModelSerializer):
 
     def to_representation(self, instance):
@@ -46,8 +45,8 @@ class StaffUserSerializer(UserProfileSerializer):
         staff_repr['date_joined'] = instance.date_joined
         return staff_repr
 
-class UserSerializer(ModelSerializer):
 
+class UserSerializer(ModelSerializer):
     password = serializers.CharField(
         max_length=128, validators=[validate_password], write_only=True)
     address = serializers.CharField(
@@ -75,10 +74,10 @@ class UserSerializer(ModelSerializer):
             Profile.objects.create(user=user, address=validated_data['address'])
         return user
 
+
 class DetailedUserSerializer(ModelSerializer):
     user = UserSerializer()
 
     class Meta:
         fields = '__all__'
         model = Profile
-

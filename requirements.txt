@@ -6,4 +6,5 @@ djangorestframework-simplejwt
 django_countries
 google.cloud
 google.oauth2
+boto3
 
