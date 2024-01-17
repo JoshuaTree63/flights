@@ -7,4 +7,5 @@ django_countries
 google.cloud
 google.oauth2
 boto3
+django-cors-headers
 

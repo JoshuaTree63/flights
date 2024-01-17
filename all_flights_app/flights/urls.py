@@ -8,6 +8,6 @@ router.register('', FlightsViewSet)
 
 urlpatterns = router.urls
 
-urlpatterns.extand([
+urlpatterns.extend([
     path('origin_cities', get_origin_cities)
 ])
