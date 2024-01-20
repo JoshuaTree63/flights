@@ -20,10 +20,10 @@ class OrderSerializer(serializers.ModelSerializer):
 
             # calculate total price before storing new order
             total_price = flight.price * validated_data['seats']
-            order = Order.objects.create(total_price=total_price, **validated_data)
-            # order = Order.objects.create(total_price=total_price,
-            #                              user=validated_data['user'],
-            #                              seats=validated_data['seats'])
+            # order = Order.objects.create(total_price=total_price, **validated_data)
+            order = Order.objects.create(total_price=total_price,
+                                         user=validated_data['user'],
+                                         seats=validated_data['seats'])
 
             # update seats left in flight
             flight.seats_left = flight.seats_left - validated_data['seats']

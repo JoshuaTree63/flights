@@ -10,11 +10,10 @@ from all_flights_app.orders.permissions import OrdersPermission
 
 
 class OrdersViewSet(mixins.CreateModelMixin,
-                   mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.ListModelMixin,
-                   GenericViewSet):
-
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     serializer_class = serializers.OrderSerializer
     queryset = models.Order.objects.all()
     permission_classes = [IsAuthenticated, OrdersPermission]
@@ -29,4 +28,3 @@ def calc_sum(request):
 
     res = int(num1) + int(num2)
     return JsonResponse({'result': res})
-
